@@ -1,15 +1,22 @@
 #ifndef FILE_H
 #define FILE_H
-
+#include <string>
+#include "Markup.h"
+#include "Conversion.h"
 
 class File
 {
-    public:
-        File();
+public:
+    File();
+    virtual void loadDataFromXML() = 0;
+    std::string getFilename();
 
-    protected:
+protected:
+    std::string filename;
+    CMarkup xml;
+    Conversion conversion;
 
-    private:
+private:
 };
 
 #endif // FILE_H

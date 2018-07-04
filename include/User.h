@@ -5,8 +5,12 @@
 class User
 {
     public:
-        User(std::string login, std::string password);
-        User(int id, std::string login, std::string password);
+        User(std::string name, std::string surname, std::string login, std::string password);
+        User(int id, std::string name, std::string surname, std::string login, std::string password);
+        std::string getName();
+        void setName(std::string val);
+        std::string getSurname();
+        void setSurname(std::string val);
         std::string getLogin();
         void setLogin(std::string val);
         std::string getPassword();
@@ -19,6 +23,8 @@ class User
     private:
         int id;
         static int nextId;
+        std::string name;
+        std::string surname;
         std::string login;
         std::string password;
         void setId(int val);

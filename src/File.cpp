@@ -1,7 +1,13 @@
 #include "File.h"
+#include <string>
+using namespace std;
 
 File::File()
 {
-    //ctor
+
 }
 
+string File::getFilename()
+{
+    return filename;
+}

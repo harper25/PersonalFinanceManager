@@ -3,20 +3,44 @@ using namespace std;
 
 int User::nextId = 1;
 
-User::User(string login, string password)
+User::User(string name, string surname, string login, string password)
 {
     setId(nextId++);
+    setName(name);
+    setSurname(surname);
     setLogin(login);
     setPassword(password);
 }
 
-User::User(int id, string login, string password)
+User::User(int id, string name, string surname, string login, string password)
 {
     setId(id);
-    setLogin(login);
-    setPassword(password);
     if (id >= nextId)
         nextId = id + 1;
+    setName(name);
+    setSurname(surname);
+    setLogin(login);
+    setPassword(password);
+}
+
+string User::getName()
+{
+    return name;
+}
+
+void User::setName(string iname)
+{
+    name = iname;
+}
+
+string User::getSurname()
+{
+    return surname;
+}
+
+void User::setSurname(string isurname)
+{
+    surname = isurname;
 }
 
 string User::getLogin()
