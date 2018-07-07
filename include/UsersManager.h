@@ -16,6 +16,7 @@ class UsersManager
         void setLoggedUserId(int);
 
         std::string getLoggedUserFullName();
+        void setLoggedUserFullName(std::string = "");
 
     protected:
 

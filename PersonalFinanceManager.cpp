@@ -5,6 +5,9 @@
 #include "FileUsers.h"
 #include "UsersManager.h"
 #include <windows.h>
+#include "CashItem.h"
+#include "Income.h"
+#include "Expense.h"
 
 using namespace std;
 
@@ -17,10 +20,11 @@ void showWelcomeMenu()
     cout << "9. Exit" << endl << endl;
 }
 
-void showUserMenu()
+void showUserMenu(string loggedUserFullName)
 {
     system("cls");
-    cout << "Personal Finance Manager --> User Menu: " << endl << endl;
+    cout << "Personal Finance Manager --> User Menu: " << endl;
+    cout << loggedUserFullName << endl << endl;
     cout << "1. " << endl;
     cout << "2. " << endl;
     cout << "3. " << endl;
@@ -36,7 +40,29 @@ int main()
     UsersManager usersManager;
     string choice;
 
-    while(1)
+    CashItem cashItem;
+    cashItem.setId(3);
+    cashItem.setName("cashItem");
+    cashItem.setDate("2018-07-01");
+    cout << "2018-07-01" << " " << cashItem.checkDate("2018-07-01") << endl;
+    cashItem.setValue(123.45);
+
+    cashItem.printCashItem();
+
+    Income income(4, 56, "przychod", "2018-07-01", 65.42);
+    cout << "2018-07-01" << " " << income.checkDate("2018-07-01") << endl;
+    income.printCashItem();
+    cout << "nextId: " << income.getNextId() << endl;
+    cout << "userId: " << income.getUserId() << endl;
+
+    Expense expense(2, 34, "wydatek", "2018-07-01", 123.45);
+    cout << "2018-07-01" << " " << expense.checkDate("2018-07-01") << endl;
+    expense.printCashItem();
+    cout << "nextId: " << expense.getNextId() << endl;
+    cout << "userId: " << expense.getUserId() << endl;
+
+
+    while(0)
     {
         showWelcomeMenu();
         cout << "Your choice: ";
@@ -60,7 +86,7 @@ int main()
 
                 while (usersManager.getLoggedUserId() != 0)
                 {
-                    showUserMenu();
+                    showUserMenu(usersManager.getLoggedUserFullName());
                     cout << "Your choice: ";
                     cin.sync();
                     getline(cin, choice);
@@ -88,6 +114,7 @@ int main()
                         break;
                     case '8':
                         usersManager.setLoggedUserId(0);
+                        usersManager.setLoggedUserFullName();
                         break;
                     default:
                         cout << "Invalid choice!" << endl;

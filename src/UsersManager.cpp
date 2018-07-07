@@ -9,6 +9,7 @@ UsersManager::UsersManager(string ifilename)
 {
     setLoggedUserId(0);
     users = fileUsers.readUsersFromXML();
+    loggedUserFullName = "";
 }
 
 void UsersManager::setLoggedUserId(int id)
@@ -102,6 +103,7 @@ void UsersManager::logging()
                 if (users[i].getPassword() == password)
                 {
                     loggedUserId = users[i].getId();
+                    setLoggedUserFullName(users[i].getName() + " " + users[i].getSurname());
                     cout << "Login and password correct!" << endl;
                     Sleep(1000);
                     return;
@@ -117,6 +119,10 @@ void UsersManager::logging()
     Sleep(1000);
 }
 
+void UsersManager::setLoggedUserFullName(std::string fullName)
+{
+    loggedUserFullName = fullName;
+}
 
 void UsersManager::changePassword()
 {
