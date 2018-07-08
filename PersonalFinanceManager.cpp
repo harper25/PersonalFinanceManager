@@ -8,6 +8,9 @@
 #include "CashItem.h"
 #include "Income.h"
 #include "Expense.h"
+#include "CashFlowManager.h"
+#include "FileIncomes.h"
+#include "FileExpenses.h"
 
 using namespace std;
 
@@ -23,14 +26,14 @@ void showWelcomeMenu()
 void showUserMenu(string loggedUserFullName)
 {
     system("cls");
-    cout << "Personal Finance Manager --> User Menu: " << endl;
-    cout << loggedUserFullName << endl << endl;
-    cout << "1. " << endl;
-    cout << "2. " << endl;
-    cout << "3. " << endl;
-    cout << "4. " << endl;
-    cout << "5. " << endl;
-    cout << "6. " << endl;
+    cout << "Personal Finance Manager --> User Menu " << endl;
+    cout << "Logged as: " << loggedUserFullName << endl << endl;
+    cout << "1. Add new income" << endl;
+    cout << "2. Add new expense" << endl;
+    cout << "3. Show balance sheet for current month" << endl;
+    cout << "4. Show balance sheet for previous month" << endl;
+    cout << "5. Show balance sheet for a given period" << endl;
+    cout << "6. Show a complete balance sheet" << endl;
     cout << "7. Change password" << endl;
     cout << "8. Log out" << endl << endl;
 }
@@ -40,29 +43,7 @@ int main()
     UsersManager usersManager;
     string choice;
 
-    CashItem cashItem;
-    cashItem.setId(3);
-    cashItem.setName("cashItem");
-    cashItem.setDate("2018-07-01");
-    cout << "2018-07-01" << " " << cashItem.checkDate("2018-07-01") << endl;
-    cashItem.setValue(123.45);
-
-    cashItem.printCashItem();
-
-    Income income(4, 56, "przychod", "2018-07-01", 65.42);
-    cout << "2018-07-01" << " " << income.checkDate("2018-07-01") << endl;
-    income.printCashItem();
-    cout << "nextId: " << income.getNextId() << endl;
-    cout << "userId: " << income.getUserId() << endl;
-
-    Expense expense(2, 34, "wydatek", "2018-07-01", 123.45);
-    cout << "2018-07-01" << " " << expense.checkDate("2018-07-01") << endl;
-    expense.printCashItem();
-    cout << "nextId: " << expense.getNextId() << endl;
-    cout << "userId: " << expense.getUserId() << endl;
-
-
-    while(0)
+    while(1)
     {
         showWelcomeMenu();
         cout << "Your choice: ";
@@ -82,7 +63,7 @@ int main()
             usersManager.logging();
             if (usersManager.getLoggedUserId() != 0)
             {
-//                ContactsManager contactsManager(usersManager.getLoggedUserId());
+                CashFlowManager cashFlowManager(usersManager.getLoggedUserId(), usersManager.getLoggedUserFullName());
 
                 while (usersManager.getLoggedUserId() != 0)
                 {
@@ -98,8 +79,10 @@ int main()
                     switch (choice[0])
                     {
                     case '1':
+                        cashFlowManager.addIncome();
                         break;
                     case '2':
+                        cashFlowManager.addExpense();
                         break;
                     case '3':
                         break;
@@ -108,6 +91,7 @@ int main()
                     case '5':
                         break;
                     case '6':
+                        cashFlowManager.showCompleteBalanceSheet();
                         break;
                     case '7':
                         usersManager.changePassword();

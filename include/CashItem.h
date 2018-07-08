@@ -7,6 +7,7 @@ class CashItem
 {
     public:
         CashItem();
+        CashItem(std::string name, std::string date, float value);
         int getId();
         void setId(int id);
         int getUserId();
@@ -19,18 +20,12 @@ class CashItem
         void setValue(float value);
         void printCashItem();
 
-        bool checkDate(std::string);
-
     protected:
         int id;
         int userId;
         std::string name;
         std::string date;
         float value;
-
-        float parseCashValue(std::string);
-        std::string getCurrentDate();
-        int getMonthDaysCount(int month, int year);
 
     private:
 };

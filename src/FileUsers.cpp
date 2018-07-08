@@ -11,14 +11,11 @@ FileUsers::FileUsers(string ifilename)
 
 void FileUsers::loadDataFromXML()
 {
-    cout << "Loading data from XML..." << endl;
     xml.Load(filename);
 }
 
 void FileUsers::addNewItemToXML(User &newUser)
 {
-    cout << "Adding new item to XML..." << endl;
-
     xml.ResetPos();
     if (xml.FindElem("USERS") == false)
         xml.AddElem("USERS");

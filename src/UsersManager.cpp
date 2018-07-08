@@ -119,7 +119,7 @@ void UsersManager::logging()
     Sleep(1000);
 }
 
-void UsersManager::setLoggedUserFullName(std::string fullName)
+void UsersManager::setLoggedUserFullName(string fullName)
 {
     loggedUserFullName = fullName;
 }
