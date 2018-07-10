@@ -2,7 +2,7 @@
 
 int Expense::nextId = 1;
 
-Expense::Expense(int userId, std::string name, std::string date, float value)
+Expense::Expense(int userId, std::string name, std::string date, double value)
 {
     setId(nextId++);
     setUserId(userId);
@@ -11,7 +11,7 @@ Expense::Expense(int userId, std::string name, std::string date, float value)
     setValue(value);
 }
 
-Expense::Expense(int id, int userId, std::string name, std::string date, float value)
+Expense::Expense(int id, int userId, std::string name, std::string date, double value)
 {
     setId(id);
     setUserId(userId);

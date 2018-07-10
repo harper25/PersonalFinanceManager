@@ -11,7 +11,7 @@ int Conversion::string2int(string number)
     return atoi(number.c_str());
 }
 
-float Conversion::string2float(string number)
+double Conversion::string2double(string number)
 {
     return atof(number.c_str());
 }

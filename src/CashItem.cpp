@@ -10,7 +10,7 @@ CashItem::CashItem()
     //ctor
 }
 
-CashItem::CashItem(string name, string date, float value)
+CashItem::CashItem(string name, string date, double value)
 {
     setName(name);
     setDate(date);
@@ -19,7 +19,7 @@ CashItem::CashItem(string name, string date, float value)
 
 void CashItem::printCashItem()
 {
-    cout << setw(4) << getId() << setw(30) << getName() << setw(14) <<
+    cout << setw(30) << getName() << setw(14) <<
          fixed << setprecision(2) << getValue() << setw(16) << getDate() << endl;
 }
 
@@ -64,12 +64,12 @@ void CashItem::setDate(string idate)
     date = idate;
 }
 
-float CashItem::getValue()
+double CashItem::getValue()
 {
     return value;
 }
 
-void CashItem::setValue(float ivalue)
+void CashItem::setValue(double ivalue)
 {
     value = ivalue;
 }

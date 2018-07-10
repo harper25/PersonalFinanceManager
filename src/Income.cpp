@@ -2,7 +2,7 @@
 
 int Income::nextId = 1;
 
-Income::Income(int userId, std::string name, std::string date, float value)
+Income::Income(int userId, std::string name, std::string date, double value)
 {
     setId(nextId++);
     setUserId(userId);
@@ -11,7 +11,7 @@ Income::Income(int userId, std::string name, std::string date, float value)
     setValue(value);
 }
 
-Income::Income(int id, int userId, std::string name, std::string date, float value)
+Income::Income(int id, int userId, std::string name, std::string date, double value)
 {
     setId(id);
     setUserId(userId);

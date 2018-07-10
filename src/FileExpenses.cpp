@@ -44,7 +44,7 @@ vector <Expense> FileExpenses::readExpensesFromXML(int loggedUserId)
     vector <Expense> expenses;
     int id, userId;
     string name, date;
-    float value;
+    double value;
 
     xml.ResetPos();
     if (xml.FindElem("EXPENSES") == true)
@@ -61,7 +61,7 @@ vector <Expense> FileExpenses::readExpensesFromXML(int loggedUserId)
             xml.FindChildElem("date");
             date = xml.GetChildData();
             xml.FindChildElem("value");
-            value = conversion.string2float(xml.GetChildData());
+            value = conversion.string2double(xml.GetChildData());
             Expense newExpense(id, userId, name, date, value);
 
             if (userId == loggedUserId)

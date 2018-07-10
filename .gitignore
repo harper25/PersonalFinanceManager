@@ -2,8 +2,8 @@
 *.depend
 *.layout
 *.txt
-TODO.txt
 *.cscope_file_list
 bin/
 obj/
 backups/
+*.xml

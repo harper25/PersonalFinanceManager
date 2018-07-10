@@ -6,8 +6,8 @@
 class Expense : public CashItem
 {
     public:
-        Expense(int userId, std::string name, std::string date, float value);
-        Expense(int id, int userId, std::string name, std::string date, float value);
+        Expense(int userId, std::string name, std::string date, double value);
+        Expense(int id, int userId, std::string name, std::string date, double value);
         int getNextId();
 
     protected:

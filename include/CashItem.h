@@ -7,7 +7,7 @@ class CashItem
 {
     public:
         CashItem();
-        CashItem(std::string name, std::string date, float value);
+        CashItem(std::string name, std::string date, double value);
         int getId();
         void setId(int id);
         int getUserId();
@@ -16,8 +16,8 @@ class CashItem
         void setName(std::string name);
         std::string getDate();
         void setDate(std::string date);
-        float getValue();
-        void setValue(float value);
+        double getValue();
+        void setValue(double value);
         void printCashItem();
 
     protected:
@@ -25,7 +25,7 @@ class CashItem
         int userId;
         std::string name;
         std::string date;
-        float value;
+        double value;
 
     private:
 };

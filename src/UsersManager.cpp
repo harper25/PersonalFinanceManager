@@ -12,9 +12,9 @@ UsersManager::UsersManager(string ifilename)
     loggedUserFullName = "";
 }
 
-void UsersManager::setLoggedUserId(int id)
+void UsersManager::setLoggedUserId(int iid)
 {
-    loggedUserId = id;
+    loggedUserId = iid;
 }
 
 int UsersManager::getLoggedUserId()
@@ -67,7 +67,7 @@ void UsersManager::registerNewUser()
 
 string UsersManager::getLoggedUserFullName()
 {
-    if (loggedUserId =! 0)
+    if (loggedUserId != 0)
         return loggedUserFullName;
     else
         return "";
@@ -102,7 +102,7 @@ void UsersManager::logging()
                 cin >> password;
                 if (users[i].getPassword() == password)
                 {
-                    loggedUserId = users[i].getId();
+                    setLoggedUserId(users[i].getId());
                     setLoggedUserFullName(users[i].getName() + " " + users[i].getSurname());
                     cout << "Login and password correct!" << endl;
                     Sleep(1000);

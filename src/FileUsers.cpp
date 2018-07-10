@@ -35,8 +35,6 @@ void FileUsers::addNewItemToXML(User &newUser)
 
 void FileUsers::updateXML(vector <User> &users)
 {
-    cout << "Updating XML..." << endl;
-
     xml.ResetPos();
     xml.FindElem("USERS");
     xml.RemoveElem();
@@ -59,7 +57,6 @@ void FileUsers::updateXML(vector <User> &users)
     }
     xml.Save(filename);
 }
-
 
 vector <User> FileUsers::readUsersFromXML()
 {

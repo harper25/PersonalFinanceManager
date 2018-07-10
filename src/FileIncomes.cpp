@@ -27,31 +27,22 @@ void FileIncomes::addNewItemToXML(Income &newIncome)
     xml.AddElem("userId", conversion.numberToString(newIncome.getUserId()));
     xml.AddElem("name", newIncome.getName());
     xml.AddElem("date", newIncome.getDate());
-
-    cout << "Value: " << conversion.numberToString(newIncome.getValue()) << endl;
-    system("pause");
-
     xml.AddElem("value", conversion.numberToString(newIncome.getValue()));
     xml.OutOfElem();
-
     xml.Save(filename);
 }
-
-
-
 
 void FileIncomes::updateXML(vector <Income> &incomes)
 {
     cout << "Updating XML..." << endl;
 }
 
-
 vector <Income> FileIncomes::readIncomesFromXML(int loggedUserId)
 {
     vector <Income> incomes;
     int id, userId;
     string name, date;
-    float value;
+    double value;
 
     xml.ResetPos();
     if (xml.FindElem("INCOMES") == true)
@@ -68,9 +59,8 @@ vector <Income> FileIncomes::readIncomesFromXML(int loggedUserId)
             xml.FindChildElem("date");
             date = xml.GetChildData();
             xml.FindChildElem("value");
-            value = conversion.string2float(xml.GetChildData());
+            value = conversion.string2double(xml.GetChildData());
             Income newIncome(id, userId, name, date, value);
-
             if (userId == loggedUserId)
             {
                 incomes.push_back(newIncome);

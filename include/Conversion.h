@@ -3,19 +3,20 @@
 
 #include <string>
 #include <sstream>
+#include <iomanip>
 
 class Conversion
 {
     public:
         Conversion();
         int string2int(std::string);
-        float string2float(std::string);
+        double string2double(std::string);
         template <typename T>
         std::string numberToString(T number)
         {
             std::ostringstream ss;
             ss.clear();
-            ss << number;
+            ss << std::setprecision(16) << number;
             return ss.str();
         }
 

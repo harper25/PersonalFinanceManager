@@ -6,8 +6,8 @@
 class Income: public CashItem
 {
     public:
-        Income(int userId, std::string name, std::string date, float value);
-        Income(int id, int userId, std::string name, std::string date, float value);
+        Income(int userId, std::string name, std::string date, double value);
+        Income(int id, int userId, std::string name, std::string date, double value);
         int getNextId();
 
     protected:

@@ -1,10 +1,10 @@
 #include <iostream>
+#include <windows.h>
 #include "User.h"
 #include "Conversion.h"
 #include "File.h"
 #include "FileUsers.h"
 #include "UsersManager.h"
-#include <windows.h>
 #include "CashItem.h"
 #include "Income.h"
 #include "Expense.h"
@@ -32,7 +32,7 @@ void showUserMenu(string loggedUserFullName)
     cout << "2. Add new expense" << endl;
     cout << "3. Show balance sheet for current month" << endl;
     cout << "4. Show balance sheet for previous month" << endl;
-    cout << "5. Show balance sheet for a given period" << endl;
+    cout << "5. Show balance sheet for a given period of time" << endl;
     cout << "6. Show a complete balance sheet" << endl;
     cout << "7. Change password" << endl;
     cout << "8. Log out" << endl << endl;
@@ -85,10 +85,13 @@ int main()
                         cashFlowManager.addExpense();
                         break;
                     case '3':
+                        cashFlowManager.showCurrentMonthBalanceSheet();
                         break;
                     case '4':
+                        cashFlowManager.showPreviousMonthBalanceSheet();
                         break;
                     case '5':
+                        cashFlowManager.showBalanceSheetForSelectedPeriod();
                         break;
                     case '6':
                         cashFlowManager.showCompleteBalanceSheet();
@@ -99,6 +102,7 @@ int main()
                     case '8':
                         usersManager.setLoggedUserId(0);
                         usersManager.setLoggedUserFullName();
+                        cashFlowManager.clearSettings();
                         break;
                     default:
                         cout << "Invalid choice!" << endl;
